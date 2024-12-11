@@ -8,6 +8,8 @@ import { BrowserModule } from "@angular/platform-browser";
 import { HttpClientModule } from "@angular/common/http";
 import { BlogComponent } from "./_modules/blog/blog.component";
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { AddupdateblogComponent } from "./_modules/addupdateblog/addupdateblog.component";
+import { ReactiveFormsModule } from "@angular/forms";
 @NgModule({
     declarations:[
         AppComponent,
@@ -15,8 +17,16 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
         FooterComponent,
         MainComponent,
         BlogComponent,
+        AddupdateblogComponent
     ],
-    imports:[AppRoutingModule, BrowserModule, HttpClientModule,NgbModule],
+    imports:[
+        AppRoutingModule,
+        BrowserModule,
+        HttpClientModule,
+        NgbModule,
+        ReactiveFormsModule,
+        
+    ],
     providers:[],
     schemas:[CUSTOM_ELEMENTS_SCHEMA],
     bootstrap:[AppComponent]

@@ -1,30 +1,41 @@
-<p>blog works!</p>
-<div class="px-5 py-5">
+
+<div class="px-5 py-3">
     <div class="card ">
-        <div class="card-header">Blog List</div>
+        <div class="card-header">
+            <div class="row">
+                <div class="col-md-10 col-sm-6">Blog List</div>
+                <div class="col-md-2 col-sm-6">
+                    <div class="row float-end"><a class="btn btn-primary" style="width: 100px;" routerLink="/add-update">Add Blog</a></div>
+                </div>
+            </div>
+        </div>
         <div class="card-body">
             <ng-components *ngIf="blogData$ | async as blog">
-                <!-- <div class="row">
-                    <div *ngFor="let item of blog">
-                        <div class="col-md-4">
-                            <div class="card">
-                                <p>{{item.username}}</p>
+                <div *ngFor="let item of blog">
+                    <div class="card mt-3">
+                        <p class="card-text px-2 py-2">{{item.text}}</p>
+                        <div class="row px-2 py-2">
+                            <div class="col-md-3">
+                                <p>Created By: {{item.username}}</p>
+                                
                             </div>
+                            <div class="col-md-3">
+                                <p>Created Date: {{item.dateCreated | date :'short'}}</p>
+                            </div>  
+                            <div class="col-md-6">
+                                <div class="row float-end">
+                                    <div class="col">
+                                        <a class="btn btn-primary" (click)="updateBlog(item)">Update</a>
+                                        <a class="btn btn-danger" style="margin-left: 5px;">Delete</a>
+                                    </div>
+                                </div>
+                                
+                            </div>  
+                                                   
                         </div>
-                         
                     </div>
-                </div> -->
-                <div *ngFor="let row of blog | slice:0:blog.length; let i = index">
-                     <div *ngIf="i % 3 === 0" class="row">
-                         <div *ngFor="let item of blog.slice(i, i + 3)" class="col"> 
-                            <div class="card">
-                                <p>{{item.username}}</p>
-                            </div>
-                        </div> 
-                    </div> 
                 </div>
             </ng-components>
-            
         </div>
     </div>
 </div>
