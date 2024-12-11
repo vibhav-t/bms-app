@@ -7,16 +7,16 @@ import { AppRoutingModule } from "./app-routing.module";
 import { BrowserModule } from "@angular/platform-browser";
 import { HttpClientModule } from "@angular/common/http";
 import { BlogComponent } from "./_modules/blog/blog.component";
-
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 @NgModule({
     declarations:[
         AppComponent,
         HeaderComponent,
         FooterComponent,
         MainComponent,
-        BlogComponent
+        BlogComponent,
     ],
-    imports:[AppRoutingModule, BrowserModule, HttpClientModule],
+    imports:[AppRoutingModule, BrowserModule, HttpClientModule,NgbModule],
     providers:[],
     schemas:[CUSTOM_ELEMENTS_SCHEMA],
     bootstrap:[AppComponent]
