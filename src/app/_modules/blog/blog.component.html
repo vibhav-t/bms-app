@@ -1,1 +1,30 @@
 <p>blog works!</p>
+<div class="px-5 py-5">
+    <div class="card ">
+        <div class="card-header">Blog List</div>
+        <div class="card-body">
+            <ng-components *ngIf="blogData$ | async as blog">
+                <!-- <div class="row">
+                    <div *ngFor="let item of blog">
+                        <div class="col-md-4">
+                            <div class="card">
+                                <p>{{item.username}}</p>
+                            </div>
+                        </div>
+                         
+                    </div>
+                </div> -->
+                <div *ngFor="let row of blog | slice:0:blog.length; let i = index">
+                     <div *ngIf="i % 3 === 0" class="row">
+                         <div *ngFor="let item of blog.slice(i, i + 3)" class="col"> 
+                            <div class="card">
+                                <p>{{item.username}}</p>
+                            </div>
+                        </div> 
+                    </div> 
+                </div>
+            </ng-components>
+            
+        </div>
+    </div>
+</div>
