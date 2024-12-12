@@ -16,9 +16,7 @@ export class BlogComponent {
     private router:Router
   ){}
   ngOnInit(){
-    this.blogService.getBlogDataList().subscribe((resp)=>{
-      this.blogData$=of(resp);
-    });
+    this.bindBlogList();
   }
   updateBlog(data: any) {
     console.log(data);
@@ -26,6 +24,18 @@ export class BlogComponent {
     this.router.navigate([`/add-update/${data.id}`]);
   }
   deleteBlog(data:any){
-
+    this.blogService.deleteBlog(data.id).subscribe((resp)=>{
+      if(resp){
+        this.bindBlogList();
+        alert("Blog has been deleted!!")
+      }else{
+        alert("Oops!! error occured")
+      }
+    });
+  }
+  bindBlogList(){
+    this.blogService.getBlogDataList().subscribe((resp)=>{
+      this.blogData$=of(resp);
+    });
   }
 }

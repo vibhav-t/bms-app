@@ -2,7 +2,7 @@ import { HttpClient, HttpParams } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { environment } from "../../environments/environment";
 import { IBlog } from "../_models/blog-data.model";
-import { Subject } from "rxjs";
+import { Observable, Subject } from "rxjs";
 
 @Injectable({
     providedIn:"root"
@@ -20,7 +20,21 @@ export class BlogService{
             withCredentials:true
         });
     }
+    getBlogDataByID(id:number){
+        return this.httpClient.get<IBlog>(`${this.baseAPIUrl}/api/Blog/${id}`,{
+            withCredentials:true
+        });
+    }
     sendData(data: IBlog) { 
         this.blogData.next(data);
+    }
+    deleteBlog(id: number): Observable<any> {
+         return this.httpClient.delete(`${this.baseAPIUrl}/api/Blog/${id}`);
+    }
+    addBlog(blog: IBlog): Observable<any> { 
+        return this.httpClient.post(`${this.baseAPIUrl}/api/Blog`, blog); 
+    }     
+    updateBlog(id: number, blog: IBlog): Observable<any> {
+         return this.httpClient.put(`${this.baseAPIUrl}/api/Blog/${id}`, blog);
     }
 }
