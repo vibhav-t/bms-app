@@ -23,6 +23,7 @@ export class BlogComponent {
     this.blogService.sendData(data);
     this.router.navigate([`/add-update/${data.id}`]);
   }
+  //This method is used to delete selected blog item
   deleteBlog(data:any){
     this.blogService.deleteBlog(data.id).subscribe((resp)=>{
       if(resp){
@@ -33,6 +34,7 @@ export class BlogComponent {
       }
     });
   }
+  //Bind the blog list item
   bindBlogList(){
     this.blogService.getBlogDataList().subscribe((resp)=>{
       this.blogData$=of(resp);

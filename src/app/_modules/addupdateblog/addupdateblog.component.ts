@@ -25,12 +25,12 @@ export class AddupdateblogComponent {
     private router: Router,
     private location: Location
   ) {}
-
+  //angular hook runs when component is initialized
   ngOnInit() {
     const hasIdPresent = this.route.snapshot.paramMap.get('id');
     this.itemId = hasIdPresent == null ? 0 : hasIdPresent;
     this.isEditMode = hasIdPresent == null ? false : true;
-
+    //initializing our form controls
     this.blogForm = new FormGroup({
       id: new FormControl(0),
       username: new FormControl('', Validators.required),
@@ -40,7 +40,7 @@ export class AddupdateblogComponent {
       ),
       text: new FormControl('', Validators.required),
     });
-
+    //If id is present bind the form values
     if (this.itemId) {
       this.blogservice.getBlogDataByID(this.itemId).subscribe((res) => {
         this.blogForm.setValue({
@@ -53,6 +53,7 @@ export class AddupdateblogComponent {
       });
     }
   }
+  //This method is used to handle the form submit basis the id it creates and update the blog item
   submitForm() {
     if (this.blogForm.invalid) {
       return alert('All fields are required!!');
@@ -69,9 +70,11 @@ export class AddupdateblogComponent {
       });
     }
   }
+  //This method used to go back to previous ui page
   backToHome() {
     this.location.back();
   }
+  //This method is used to format the date value dd-MM-yyyy
   private formatDate(date:any) {
     const d = new Date(date);
     let month = '' + (d.getMonth() + 1);
