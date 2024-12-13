@@ -1,6 +1,6 @@
 <div class="layout-wrapper">
     <div class="layout-container">
-        <app-header class="my-header"></app-header>
+        <app-header [appName]="appName" class="my-header" (textClicked)="onTextClicked($event)"></app-header>
         <div class="layout-page">
             <router-outlet></router-outlet>
         </div>

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { BlogService } from '../../_services/blog.service';
 import { IBlog } from '../../_models/blog-data.model';
 import { Observable, of } from 'rxjs';
@@ -18,6 +18,7 @@ export class BlogComponent {
   ngOnInit(){
     this.bindBlogList();
   }
+  //Update blog item by passing blog details and id
   updateBlog(data: any) {
     console.log(data);
     this.blogService.sendData(data);

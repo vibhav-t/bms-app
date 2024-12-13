@@ -6,5 +6,11 @@ import { Component } from '@angular/core';
   styleUrl: './main.component.scss'
 })
 export class MainComponent {
+  appName: string = 'Blog Management System';
+  constructor(){}
 
+  //change the app name
+  onTextClicked(text: string) {
+    this.appName = text;
+  }
 }
